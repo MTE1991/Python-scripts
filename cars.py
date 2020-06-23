@@ -11,7 +11,6 @@ class CarBrands:
 class Porsche(CarBrands):
 
     def __init__(self, model, engine, acceleration, topspeed):
-        # super() inherits everything from its parent class
         super().__init__(model, engine, acceleration, topspeed)
         self.est =  1948 # a property of the child class
 
