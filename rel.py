@@ -11,7 +11,6 @@ class TimeDilation(SpecialRelativity):
 
     def __init__(self, v, t_0):
         super().__init__(v)
-        self.v = v
         self.t_0 = t_0
         
     def t_dil(self):
@@ -22,7 +21,6 @@ class LengthContraction(SpecialRelativity):
 
     def __init__(self,v,l_0):
         super().__init__(v)
-        self.v = v
         self.l_0 = l_0
         
     def l_cont(self):
@@ -33,7 +31,6 @@ class MassIncrease(SpecialRelativity):
 
     def __init__(self,v,m_0):
         super().__init__(v)
-        self.v = v
         self.m_0 = m_0
         
     def mass_inc(self):
