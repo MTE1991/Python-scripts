@@ -4,7 +4,7 @@ class Temperature:
         self.t = t
         
     def celsius_to_fahrenheight(self):
-        f = (self.t)/5 + 32
+        f = 9*(self.t)/5 + 32
         return round(f,2)
 
     def celsius_to_kelvin(self):
