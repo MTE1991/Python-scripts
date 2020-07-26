@@ -2,7 +2,7 @@ class Temperature:
 
     def __init__(self,t,unit):
         self.t = t
-        self.unit = unit
+        self.unit = unit # must be c, f or k as string
         
     def celsius_to_fahrenheight(self):
         if self.unit == "c":
@@ -25,7 +25,6 @@ class Temperature:
         else:
             raise ValueError("Wrong Unit.")
         
-
     def fahrenheight_to_kelvin(self):
         if self.unit == "f":
             k = 5*(self.t-32)/9 + 273
