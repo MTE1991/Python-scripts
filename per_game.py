@@ -29,6 +29,7 @@ for i in range(0,50):
 score_np = array(score)
 
 m_rating = (score_np[0]+score_np[3]+score_np[6]+score_np[9]+score_np[12]+score_np[15]+score_np[18]+
-score_np[21])
+score_np[21]+score_np[24]+score_np[27]+score_np[30]+score_np[33]+score_np[36]+score_np[39]+score_np[42]+
+score_np[45])
 
 # still wip...
