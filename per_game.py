@@ -17,7 +17,7 @@ traits = array(["self-reliant","yielding","helpful","defends own beliefs","cheer
 "individualistic","do not use harsh language","unsystematic","competitive","love children","tactful",
 "ambitious","gentle","conventional"])
 
-for i in range(0,5):
+for i in range(0,50):
     print(no_traits[i],traits[i])
     rating = int(input(">> "))
 
@@ -26,3 +26,9 @@ for i in range(0,5):
 
     score.append(rating)
 
+score_np = array(score)
+
+m_rating = (score_np[0]+score_np[3]+score_np[6]+score_np[9]+score_np[12]+score_np[15]+score_np[18]+
+score_np[21])
+
+# still wip...
