@@ -1,6 +1,14 @@
+# Ideas are taken from the book "Brain Games" by Richard B. Fisher.
+
 from numpy import array
 
-print("--: Gender Game 1.0 :--")
+print("--: Gender Game 1.0 :--\n")
+print("""There will be sixty traits below that will judge how androgynous you are. Which means
+how much gender bias your personality has.\n
+Indicate on a scale of 1 to 7 how well each traits describe you. A 1 means it's never true
+for you, a 7 means it's always true.\n""")
+
+a_1 = str(input("Press any key to proceed..."))
 
 score = []
 
@@ -30,6 +38,6 @@ score_np = array(score)
 
 m_rating = (score_np[0]+score_np[3]+score_np[6]+score_np[9]+score_np[12]+score_np[15]+score_np[18]+
 score_np[21]+score_np[24]+score_np[27]+score_np[30]+score_np[33]+score_np[36]+score_np[39]+score_np[42]+
-score_np[45])
+score_np[45]+score_np[49]+score_np[51]+score_np[54]+score_np[58])
 
 # still wip...
