@@ -39,15 +39,13 @@ def game_main():
     "individualistic","do not use harsh language","unsystematic","competitive","love children","tactful",
     "ambitious","gentle","conventional"])
 
-    for i in range(0,50):
+    for i in range(0,60):
         print(no_traits[i],".",traits[i])
         rating = int(input(">> "))
         score.append(rating)
 
         if rating < 1 or rating > 7:
             raise ValueError("Please enter a number between 1 to 7.")
-
-        score.append(rating)
 
     score_np = array(score)
 
@@ -61,7 +59,6 @@ def game_main():
 
     result = (f_score - m_score) * 2.322 # This is derived from some complex statistical procedure, which I am not aware of...
 
-    print("Result:\n")
     if result == 0: print("You're androgynous.\n")
     elif result > 0 and result <= 1: print("You're near feminine.\n")
     elif result > 1 and result <= 2.025: print("You're feminine.\n")
