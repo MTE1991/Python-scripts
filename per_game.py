@@ -59,11 +59,22 @@ def game_main():
 
     result = (f_score - m_score) * 2.322 # This is derived from some complex statistical procedure, which I am not aware of...
 
-    if result == 0: print("You're androgynous.\n")
-    elif result > 0 and result <= 1: print("You're near feminine.\n")
-    elif result > 1 and result <= 2.025: print("You're feminine.\n")
-    elif result < 0 and result <= -1: print("You're near masculine.\n")
-    elif result < 0 and result <= -2.025: print("You're musculine.\n")
+    #Evaluation:
+    if result == 0:
+        print("""Result:
+        You're androgynous.\n""")
+    elif result > 0 and result <= 1:
+        print("""Result:
+        You're near feminine.\n""")
+    elif result >= 2.025:
+        print("""Result:
+        You're feminine.\n""")
+    elif result < 0 and result <= -1:
+        print("""Result:
+        You're near masculine.\n""")
+    elif result >= -2.025:
+        print("""Result:
+        You're musculine.\n""")
 
     print("""
     Disclaimer:
