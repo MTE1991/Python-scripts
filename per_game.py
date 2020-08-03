@@ -47,19 +47,21 @@ def game_main():
         if rating < 1 or rating > 7:
             raise ValueError("Please enter a number between 1 to 7.")
 
-    score_np = array(score)
-
+    score_np = array(score) # empty list is now a numpy array full with the ratings given by the user...
+    
+    # Masculinity score:
     m_score = (score_np[0]+score_np[3]+score_np[6]+score_np[9]+score_np[12]+score_np[15]+score_np[18]+
     score_np[21]+score_np[24]+score_np[27]+score_np[30]+score_np[33]+score_np[36]+score_np[39]+score_np[42]+
     score_np[45]+score_np[49]+score_np[51]+score_np[54]+score_np[59])
 
+    # Feminity score:
     f_score = (score_np[1]+score_np[4]+score_np[7]+score_np[10]+score_np[13]+score_np[16]+score_np[19]+score_np[22]+
     score_np[25]+score_np[28]+score_np[31]+score_np[34]+score_np[37]+score_np[40]+score_np[43]+score_np[46]+score_np[48]+
     score_np[52]+score_np[55]+score_np[58])
 
+    #Evaluation:
     result = (f_score - m_score) * 2.322 # This is derived from some complex statistical procedure, which I am not aware of...
 
-    #Evaluation:
     if result == 0:
         print("""Result:
         You're androgynous.\n""")
