@@ -79,7 +79,7 @@ def game_main():
         You're musculine.\n""")
 
     print("""
-    Disclaimer:
+    Note:
 
     Results may be subject to doubt, even though it's a psycological game.
     It's because many of the qualities are subject to stereotypic bias. So the results
