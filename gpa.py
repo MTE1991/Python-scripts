@@ -1,8 +1,17 @@
-class marks:
-	
-	def __init__(self, marks):
-		self.marks = marks
+class Student:
+    def __init__(self,year,exam):
+        self.year = int(year)
+        self.exam = exam
+        self.subjects = ["Mathematics","Physics","Chemistry","Biology",
+        "English","Bangla","ICT"]
+        self.marks = [] # marks to be appended later
 
+    def getmarks(self):
+        for i in range(0,6):
+            print(i,self.subjects[i],"=")
+            n = int(input())
+            self.marks.append(n)
+            
 	def gpa(self):
 		if self.marks >= 33 and self.marks <= 39:
 			return 1.00
@@ -23,17 +32,6 @@ class marks:
 		elif self.marks > 100:
 			raise ValueError("Marks can't exceed 100.")
 
-# instances with user input function:		
-phy = marks(float(input("phy=")))
-ch = marks(float(input("ch=")))
-bio = marks(float(input("bio=")))
-math = marks(float(input("math=")))
-ban = marks(float(input("Ban=")))
-eng = marks(float(input("eng=")))
-ict = marks(float(input("ict=")))
-
-total = phy.gpa()+ch.gpa()+bio.gpa()+math.gpa()+ban.gpa()+eng.gpa()
-avg = total/7
-
-print("GPA =",round(avg,2))
-
+s1 = Student(2020,"HSC")
+s1.getmarks()
+s1.gpa()
