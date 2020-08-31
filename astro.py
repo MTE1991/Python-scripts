@@ -1,4 +1,5 @@
 from math import pi
+
 G = 6.673e-11 # Nm^2 kg^-2
 c = 3e8 # m/s
 au = 1.496e11 # metre
