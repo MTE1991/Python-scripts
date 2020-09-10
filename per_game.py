@@ -1,4 +1,5 @@
 # Ideas are taken from the book "Brain Games" by Richard B. Fisher.
+# Created by MT Ekleel
 
 from numpy import array
 
@@ -8,7 +9,6 @@ def game_main():
 
     print("""
     Made by:
-
     MT Ekleel
     E-mail: mtahsinekleel02@gmail.com
     Facebook: MT Ekleel
@@ -26,9 +26,6 @@ def game_main():
 
     score = []
 
-    no_traits = array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,
-    31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60])
-
     traits = array(["self-reliant","yielding","helpful","defends own beliefs","cheerful","moody","independent",
     "shy","conscientious","athletic","affectionate","theatrical","assertive","easily flattered","happy",
     "strong personality","loyal","unpredictable","forceful","feminine","reliable","analytical","sympathetic",
@@ -39,16 +36,18 @@ def game_main():
     "individualistic","do not use harsh language","unsystematic","competitive","love children","tactful",
     "ambitious","gentle","conventional"])
 
-    for i in range(0,60):
-        print(no_traits[i],".",traits[i])
+    i = 0
+
+    while i <= 59:
+        print(i+1,".",traits[i])
+        i += 1
         rating = int(input(">> "))
         score.append(rating)
-
         if rating < 1 or rating > 7:
             raise ValueError("Please enter a number between 1 to 7.")
 
-    score_np = array(score) # empty list is now a numpy array full with the ratings given by the user...
-    
+    score_np = array(score)
+
     # Masculinity score:
     m_score = (score_np[0]+score_np[3]+score_np[6]+score_np[9]+score_np[12]+score_np[15]+score_np[18]+
     score_np[21]+score_np[24]+score_np[27]+score_np[30]+score_np[33]+score_np[36]+score_np[39]+score_np[42]+
@@ -80,11 +79,9 @@ def game_main():
 
     print("""
     Note:
-
     Results may be subject to doubt, even though it's a psycological game.
     It's because many of the qualities are subject to stereotypic bias. So the results
-    may be not fully accurate.
-
+    may not be fully accurate.
     If you want to understand how the game works, please check the source code or
     contact with the developer.
     """)
@@ -95,5 +92,3 @@ def game_main():
     else: print("Thank you for participating in this game.")
 
 game_main()
-
-# developed by MT Ekleel
