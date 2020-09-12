@@ -6,7 +6,6 @@ from numpy import array
 while True:
 
     print("\t\t--: Gender bias: Masculine? Feminine? or Androgynous? ver 1.0 :--\n")
-
     print("""
     Made by:
     MT Ekleel
@@ -14,7 +13,6 @@ while True:
     Facebook: MT Ekleel
     GitHub: MTE1991
     """)
-
     print("""
     There will be sixty traits below that will judge how androgynous you are. Which means
     how much gender bias your personality has.\n
@@ -23,9 +21,7 @@ while True:
     """)
 
     a_1 = str(input("Press any key to proceed..."))
-
     score = []
-
     traits = array(["self-reliant","yielding","helpful","defends own beliefs","cheerful","moody","independent",
     "shy","conscientious","athletic","affectionate","theatrical","assertive","easily flattered","happy",
     "strong personality","loyal","unpredictable","forceful","feminine","reliable","analytical","sympathetic",
@@ -35,7 +31,6 @@ while True:
     "tender","friendly","aggresive","gullible","inefficient","childlike","act as a leader","adaptative",
     "individualistic","do not use harsh language","unsystematic","competitive","love children","tactful",
     "ambitious","gentle","conventional"])
-
     i = 0
 
     while i <= 59:
@@ -97,7 +92,6 @@ while True:
     If you want to understand how the game works, please check the source code or
     contact with the developer.
     """)
-
     a_2 = str(input("Do you want to play again? (Y/N) >> "))
 
     if a_2 == "Y" or a_2 == "y": game_main()
