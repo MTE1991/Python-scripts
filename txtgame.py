@@ -53,8 +53,9 @@ while True:
     score_np[25]+score_np[28]+score_np[31]+score_np[34]+score_np[37]+score_np[40]+score_np[43]+score_np[46]+score_np[48]+
     score_np[52]+score_np[55]+score_np[58])
 
-    #Evaluation:
-    result = (f_score - m_score) * 2.322 # This is derived from some complex statistical procedure, which I am not aware of...
+    # Evaluation:
+    # This is derived from some complex statistical procedure, which I am not aware of...
+    result = (f_score - m_score) * 2.322
 
     if result == 0:
         print("""Result:
@@ -65,12 +66,12 @@ while True:
     elif result >= 2.025:
         print("""Result:
         You're feminine.\n""")
-    elif result < 0 and result <= -1:
+    elif result < 0 and result >= -1:
         print("""Result:
         You're near masculine.\n""")
-    elif result >= -2.025:
+    elif result <= -2.025:
         print("""Result:
-        You're musculine.\n""")
+        You're masculine.\n""")
 
     # Log file:
     with open('log.txt', 'w') as logf:
