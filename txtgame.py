@@ -5,7 +5,7 @@ from numpy import array
 
 while True:
 
-    print("\t\t--: Gender bias: Masculine? Feminine? or Androgynous? ver 1.0 :--\n")
+    print("\t\t--: Gender bias: Masculine? Feminine? or Androgynous? ver 1.01 :--\n")
     print("""
     Made by:
     MT Ekleel
