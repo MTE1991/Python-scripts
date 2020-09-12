@@ -3,7 +3,7 @@
 
 from numpy import array
 
-def game_main():
+while True:
 
     print("\t\t--: Gender bias: Masculine? Feminine? or Androgynous? ver 1.0 :--\n")
 
@@ -77,6 +77,18 @@ def game_main():
         print("""Result:
         You're musculine.\n""")
 
+    # Log file:
+    with open('log.txt', 'w') as logf:
+        logf.write("----Start----\n")
+        logf.write("--Scores--\n")
+        for i in score_np:
+            logf.write('%s\n' % i)
+        logf.write("--Scores--\n")
+        logf.write("--Result--\n")
+        logf.write("Result = {result:.2f}\n".format(result=result))
+        logf.write("--Result--\n")
+        logf.write("----Stop----\n\n")
+
     print("""
     Note:
     Results may be subject to doubt, even though it's a psycological game.
@@ -86,9 +98,9 @@ def game_main():
     contact with the developer.
     """)
 
-    a_2 = str(input("Do you want to play again? (Y/N) : "))
+    a_2 = str(input("Do you want to play again? (Y/N) >> "))
 
     if a_2 == "Y" or a_2 == "y": game_main()
-    else: print("Thank you for participating in this game.")
-
-game_main()
+    else:
+        print("Thank you for participating in this game.")
+        break
