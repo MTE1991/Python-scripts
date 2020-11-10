@@ -12,6 +12,7 @@ def is_prime(n) -> bool:
 
 numbers = []
 prime = 0
+
 n = int(input("How many numbers? : "))
 print("Enter ", n, "numbers :")
 for i in range(0, n):
