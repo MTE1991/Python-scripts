@@ -69,7 +69,7 @@ while True:
     elif result < 0 and result >= -1:
         print("""Result:
         You're near masculine.\n""")
-    elif result <= -2.025:
+    elif result < -1 and result <= -2.025:
         print("""Result:
         You're masculine.\n""")
 
