@@ -1,10 +1,7 @@
 # Ideas are taken from the book "Brain Games" by Richard B. Fisher.
 # Created by MT Ekleel
 
-from numpy import array
-
 while True:
-
     print("\t\t--: Gender bias: Masculine? Feminine? or Androgynous? ver 1.02 :--\n")
     print("""
     Made by:
@@ -22,7 +19,7 @@ while True:
 
     a_1 = str(input("Press any key to proceed..."))
     score = []
-    traits = array(["self-reliant","yielding","helpful","defends own beliefs","cheerful","moody","independent",
+    traits = ["self-reliant","yielding","helpful","defends own beliefs","cheerful","moody","independent",
     "shy","conscientious","athletic","affectionate","theatrical","assertive","easily flattered","happy",
     "strong personality","loyal","unpredictable","forceful","feminine","reliable","analytical","sympathetic",
     "jealous","leadership ability","sensitive to others","truthful","willing to take risks","understanding",
@@ -30,7 +27,7 @@ while True:
     "conceited","dominant","soft-spoken","likable","masculine","warm","solemn","willing to take a stand",
     "tender","friendly","aggresive","gullible","inefficient","childlike","act as a leader","adaptative",
     "individualistic","do not use harsh language","unsystematic","competitive","love children","tactful",
-    "ambitious","gentle","conventional"])
+    "ambitious","gentle","conventional"]
     i = 0
 
     while i <= 59:
@@ -52,18 +49,16 @@ while True:
             continue
             
         score.append(rating)
-        
-    score_np = array(score)
 
     # Masculinity score:
-    m_score = (score_np[0]+score_np[3]+score_np[6]+score_np[9]+score_np[12]+score_np[15]+score_np[18]+
-    score_np[21]+score_np[24]+score_np[27]+score_np[30]+score_np[33]+score_np[36]+score_np[39]+score_np[42]+
-    score_np[45]+score_np[49]+score_np[51]+score_np[54]+score_np[59])
+    m_score = (score[0]+score[3]+score[6]+score[9]+score[12]+score[15]+score[18]+
+    score[21]+score[24]+score[27]+score[30]+score[33]+score[36]+score[39]+score[42]+
+    score[45]+score[49]+score[51]+score[54]+score[59])
 
     # Feminity score:
-    f_score = (score_np[1]+score_np[4]+score_np[7]+score_np[10]+score_np[13]+score_np[16]+score_np[19]+score_np[22]+
-    score_np[25]+score_np[28]+score_np[31]+score_np[34]+score_np[37]+score_np[40]+score_np[43]+score_np[46]+score_np[48]+
-    score_np[52]+score_np[55]+score_np[58])
+    f_score = (score[1]+score[4]+score[7]+score[10]+score[13]+score[16]+score[19]+score[22]+
+    score[25]+score[28]+score[31]+score[34]+score[37]+score[40]+score[43]+score[46]+score[48]+
+    score[52]+score[55]+score[58])
 
     # Evaluation:
     # This is derived from some complex statistical procedure, which I am not aware of...
@@ -89,7 +84,7 @@ while True:
     with open('log.txt', 'w') as logf:
         logf.write("----Start----\n")
         logf.write("--Scores--\n")
-        for i in score_np:
+        for i in score:
             logf.write('%s\n' % i)
         logf.write("--Scores--\n")
         logf.write("--Result--\n")
@@ -107,7 +102,8 @@ while True:
     """)
     a_2 = str(input("Do you want to play again? (Y/N) >> "))
 
-    if a_2 == "Y" or a_2 == "y": game_main()
+    if a_2 == "Y" or a_2 == "y":
+        continue
     else:
         print("Thank you for participating in this game.")
         break
