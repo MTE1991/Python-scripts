@@ -5,7 +5,7 @@ from numpy import array
 
 while True:
 
-    print("\t\t--: Gender bias: Masculine? Feminine? or Androgynous? ver 1.01 :--\n")
+    print("\t\t--: Gender bias: Masculine? Feminine? or Androgynous? ver 1.02 :--\n")
     print("""
     Made by:
     MT Ekleel
@@ -34,13 +34,25 @@ while True:
     i = 0
 
     while i <= 59:
-        print(i+1,".",traits[i])
-        i += 1
-        rating = int(input(">> "))
-        score.append(rating)
-        if rating < 1 or rating > 7:
-            raise ValueError("Please enter a number between 1 to 7.")
+        try:
+            print(i+1,".",traits[i])
+            i += 1
+            rating = int(input(">> "))
+            
+            # this condition below is used to only check whether the input is between 1 and 7 or not
+            if rating < 1 or rating > 7:
+                print("You are supposed to enter an integer between 1 and 7")
+                i -= 1
+                continue
 
+        #this exception bellow is used to only check whether the input is integer or not
+        except:
+            print("You are supposed to enter an integer between 1 and 7")
+            i -= 1
+            continue
+            
+        score.append(rating)
+        
     score_np = array(score)
 
     # Masculinity score:
