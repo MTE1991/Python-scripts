@@ -1,26 +1,41 @@
 from manim import *
 
 class KeplerianOrbit(Scene):
-    # Define the rate function to follow Kepler's 2nd Law (works for a single orbit)
-    def kepler_rate_func(self, t):
+    # Define the rate function to follow Kepler's 2nd Law
+    def kepler_rate_func(self, t, eccentricity=0.5):
         # Calculate the mean anomaly
         M = 2 * np.pi * t
-        # Solve Kepler's equation for the eccentric anomaly E
+        # Solve Kepler's equation for the eccentric anomaly E using an iterative method
         E = M
         for _ in range(5):  # Iterate to improve accuracy
-            E = M + 0.5 * np.sin(E)
+            E = M + eccentricity * np.sin(E)
         # Calculate the true anomaly
-        theta = 2 * np.arctan(np.sqrt((1 + 0.5) / (1 - 0.5)) * np.tan(E / 2))
+        theta = 2 * np.arctan(np.sqrt((1 + eccentricity) / (1 - eccentricity)) * np.tan(E / 2))
         # Normalize theta to be between 0 and 1
         return (theta + np.pi) / (2 * np.pi)
 
-    def construct(self):
-        title = Title("Keplerian Orbit Animation", font_size=28, underline_buff=0.08)
+    def get_position(self, t, a=4, b=3):
+        # Calculate the position of the planet on the ellipse
+        angle = 2 * np.pi * self.kepler_rate_func(t)
+        x = a * np.cos(angle)
+        y = b * np.sin(angle)
+        return np.array([x, y, 0])
 
+    def get_velocity(self, t, a=4, b=3):
+        # Approximate velocity vector using central differences
+        dt = 0.01
+        pos_now = self.get_position(t, a, b)
+        pos_next = self.get_position(t + dt, a, b)
+        velocity = (pos_next - pos_now) / dt
+        return velocity
+
+    def construct(self):
         # Create the elliptical orbit (width = 2a, height = 2b)
         two_a = 8
         two_b = 6
-        ellipse = Ellipse(width=two_a, height=two_b)  # Semi-major axis = 4, semi-minor axis = 3
+        a = two_a / 2
+        b = two_b / 2
+        ellipse = Ellipse(width=two_a, height=two_b)
 
         # Create the Sun at the focus (at one of the foci of the ellipse)
         sun = Dot(ellipse.get_center() + LEFT * 2, color=YELLOW, radius=1)
@@ -30,34 +45,35 @@ class KeplerianOrbit(Scene):
         planet = Dot(color=RED, radius=1)
         planet.scale(0.1)
 
-        # Kepler's 3 laws as mathematical formulas
-        law1_formula = MathTex(r"\text{1. } r = \frac{a(1 - e^2)}{1 + e \cos \theta}", font_size=30)
-        law2_formula = MathTex(r"\text{2. } \frac{dA}{dt} = \text{constant}", font_size=30)
-        law3_formula = MathTex(r"\text{3. } T^2 \propto a^3", font_size=30)
+        # Create the motion path (ellipse)
+        orbit_path = TracedPath(planet.get_center, stroke_opacity=0.5, stroke_color=GREY)
 
-        # Positioning the formulas on the right
-        law1_formula.to_edge(RIGHT).shift(UP * 2)
-        law2_formula.next_to(law1_formula, DOWN, buff=1)
-        law3_formula.next_to(law2_formula, DOWN, buff=1)
+        # Velocity and position vectors
+        position_vector = always_redraw(
+            lambda: Arrow(start=sun.get_center(), end=planet.get_center(), buff=0, color=BLUE)
+        )
+        velocity_vector = always_redraw(
+            lambda: Arrow(
+                start=planet.get_center(),
+                end=planet.get_center() + 0.5 * self.get_velocity(self.time_tracker.get_value(), a, b),
+                buff=0,
+                color=GREEN
+            )
+        )
 
-        # no of iterations of orbits
-        n = 2
+        # Time tracker
+        self.time_tracker = ValueTracker(0)
 
-        self.play(Write(title))
+        # Update the planet's position based on the time tracker
+        planet.add_updater(
+            lambda mob: mob.move_to(self.get_position(self.time_tracker.get_value(), a, b))
+        )
 
-        # Fade in the formulas
-        self.play(FadeIn(law1_formula), FadeIn(law2_formula), FadeIn(law3_formula))
+        # Add everything to the scene
+        self.add(sun, planet, orbit_path, position_vector, velocity_vector)
 
-        for _ in range(n):
-            # Create the motion path (ellipse)
-            orbit_path = TracedPath(planet.get_center, stroke_opacity=[0, 1], stroke_color=GREY, dissipating_time=None)
-            # Add everything to the scene
-            self.add(sun, planet, orbit_path)
-            # Animate the planet moving along the orbit
-            self.play(MoveAlongPath(planet, ellipse), run_time=10, rate_func=self.kepler_rate_func)
-
-        # Fade out the formulas
-        self.play(FadeOut(law1_formula), FadeOut(law2_formula), FadeOut(law3_formula))
+        # Animate the planet moving along the orbit
+        self.play(self.time_tracker.animate.set_value(1), run_time=20, rate_func=linear)
 
         # Wait at the end
         self.wait(1)
